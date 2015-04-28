@@ -13,5 +13,5 @@
     ret2=TT_FinalCleanup();
     ret3=TT_Shutdown();
     
-    return 0;
+    return;
 }
