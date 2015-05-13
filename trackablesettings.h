@@ -13,8 +13,7 @@ namespace Core
 {
     const int kTrackableNameMaxLen = 32;
     const int kTrackableModelNameMaxLen = 256;
-    class cIReader;
-    class cIWriter;
+    class cSerializer;
 }
 
 class cTrackableSettings
@@ -22,37 +21,35 @@ class cTrackableSettings
 public:
     cTrackableSettings();
 
-    void  Save(Core::cIWriter *Serial) const;
-    void  Load(Core::cIReader *Serial);
+    void  Save(Core::cSerializer *Serial);
+    void  Load(Core::cSerializer *Serial);
 
-    wchar_t  mName     [Core::kTrackableNameMaxLen];
-    wchar_t  mModelName[Core::kTrackableModelNameMaxLen];
+    char  mName     [Core::kTrackableNameMaxLen];
+    char  mModelName[Core::kTrackableModelNameMaxLen];
 
-    int   UserData;
+    int   TrackableID;
     float ColorR;
     float ColorG;
     float ColorB;
 
-    float MaxFrameRotation;               //== deprecated
-    float MaxFrameTranslation;            //== deprecated
+    float MaxFrameRotation;               //== depricated
+    float MaxFrameTranslation;            //== depricated
 
-    bool  DynamicRotationConstraint;      //== deprecated
-    bool  DynamicTranslationConstraint;   //== deprecated
-    int   DynamicConstraintFrames;
-    bool  StaticYawRotationConstraint;    //== deprecated
-    bool  StaticPitchRotationConstraint;  //== deprecated
-    bool  StaticRollRotationConstraint;   //== deprecated
+    bool  DynamicRotationConstraint;      //== depricated
+    bool  DynamicTranslationConstraint;   //== depricated
+    bool  StaticYawRotationConstraint;    //== depricated
+    bool  StaticPitchRotationConstraint;  //== depricated
+    bool  StaticRollRotationConstraint;   //== depricated
 
-    float YawGreaterThan;                 //== deprecated
-    float YawLessThan;                    //== deprecated
-    float PitchGreaterThan;               //== deprecated
-    float PitchLessThan;                  //== deprecated
-    float RollGreaterThan;                //== deprecated
-    float RollLessThan;                   //== deprecated
+    float YawGreaterThan;                 //== depricated
+    float YawLessThan;                    //== depricated
+    float PitchGreaterThan;               //== depricated
+    float PitchLessThan;                  //== depricated
+    float RollGreaterThan;                //== depricated
+    float RollLessThan;                   //== depricated
 
     double Smoothing;                     
 
-    bool   Visible;
     bool   DisplayUntracked;
     bool   DisplayPivot;
     bool   DisplayUntrackedMarkers;
@@ -77,14 +74,6 @@ public:
     int    DisplayOrientationSpread;
     int    DisplayOrientationSize;
 
-    //== Static constraint ==--
-
-    bool    StaticOrientationConstraint;
-    double  StaticConstraintX;
-    double  StaticConstraintY;
-    double  StaticConstraintZ;
-    double  StaticConstraintAngle;
-
     // Solver settings
     bool    Enabled;
     float   MaxMarkerDeflection;
@@ -92,7 +81,6 @@ public:
     int     MinimumHitCount;         //== depricated
     float   Flexibility;
     bool    ShareMarkers;
-    bool    Unique;
     int     DynamicOverride;         //== depricated
     int     StaticOverride;          //== depricated
     bool    PreciseOrientation;      //== depricated
